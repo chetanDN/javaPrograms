@@ -56,7 +56,7 @@ import java.math.*;
 import java.util.regex.*;
 
 public class Solution {
-	public static int BigSum=0;
+	public static int BigSum=-9*6*6-1;		//dont take =0, if may all elements be negative also, -1 make one more
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
