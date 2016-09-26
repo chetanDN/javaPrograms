@@ -48,7 +48,7 @@ In the sample testcase, there are 4 subarrays of contiguous numbers.
 
 In these subarrays, there are  unique numbers, respectively. The maximum amount of unique numbers among all possible contiguous subarrays is .
 */
-
+/*this method to solve instead of set and other is  , this prog has time constrains of 3 sec*/
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
@@ -99,3 +99,64 @@ class Solution {
 		System.out.println(maxUnqEle);		// print the max unique ele in sub arrays formed
 	}
 }
+
+/*Another Solution using arrays instead of map(map is easier to understand)*/
+/*
+package helloWorld;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Scanner;
+
+class Solution {
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		
+		Deque q = new ArrayDeque<Integer>();
+		
+		int[] a = new int[10000001];
+		int i = 0;
+		int n = in.nextInt();
+		int m = in.nextInt();
+		int recMax = 0;			// to store max unique ele count after checking all sub arrays
+		int curCount = 0;		// to store current sub array's unique ele count
+
+		
+		for (; i < m; i++) {	// for the first sub array( of size m);
+			int x = in.nextInt();
+//Step 1: main logic to store count of unique elements
+			if (a[x] == 0) {
+				curCount++;
+				if (recMax < curCount)
+					recMax = curCount;
+			}
+//Step 2: here logic is to increase value at index of array 
+			a[x]++;
+			q.addLast(x);		// [5, 3 ,5]  
+		}
+		
+//Step 3:  for the sub sequent sub array's forming 
+		for (; i < n; i++) {			//here i value is sustained to 'm'
+			
+			if (a[(int) q.getFirst()] == 1)		// [ |5| , 3 , 5] --> count of 5 is 2 --> false 
+				curCount--;						// if 1 => unique => count is reduced as we move  to next sub array
+			
+			a[(int) q.getFirst()]--;		//now reduce the value itself as first element is left and next element is added to have sub array
+			q.removeFirst();
+			int x = in.nextInt();
+			if (a[x] == 0) {			//if unique ele, increse count of current count
+				curCount++;
+				if (recMax < curCount)	// logic to store overall max unique elements found from all sub array
+					recMax = curCount;
+			}
+			a[x]++;
+			q.addLast(x);
+		}
+		System.out.println(recMax);	// output the max unique ele of sub array
+	}
+}
+
+
+
+*/
