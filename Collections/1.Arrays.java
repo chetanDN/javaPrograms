@@ -29,7 +29,7 @@ Sample Input
 30
 40
 50
-Sample Output
+Sample Output 
 
 10
 20
