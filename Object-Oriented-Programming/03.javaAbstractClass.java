@@ -44,7 +44,7 @@ abstract class Book {
 // Write MyBook class here
 class MyBook extends Book {     //abstract class acts as base to sub class so extent it
 	void setTitle(String s) {   //impliment only un-implimented classes i.e abstract methods
-		this.title = s;
+		this.title = s;		//also title=s;
 	}
 }
 
